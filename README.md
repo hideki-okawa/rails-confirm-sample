@@ -1,5 +1,16 @@
 # README
 
+## 環境
+
+```
+$ ruby -v
+ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-darwin20]
+$ rails -v
+Rails 5.2.8.1
+$ postgres --version
+postgres (PostgreSQL) 10.22
+```
+
 ## セットアップ
 
 ```

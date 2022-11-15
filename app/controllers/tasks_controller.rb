@@ -12,11 +12,24 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def confirm_new
+    # 新規登録画面から受け取ったデータからタスクオブジェクトを作成
+    @task = current_user.tasks.new(task_params)
+    # 問題があれば新規登録画面に戻す
+    render :new unless @task.valid?
+  end
+
   def edit
   end
 
   def create
     @task = current_user.tasks.new(task_params)
+
+    # 戻るボタンが押されたたら新規登録画面に戻る
+    if params[:back].present?
+      render :new
+      return
+    end
 
     if @task.save
       redirect_to @task, notice: "タスク「#{@task.name}」を登録しました。"
